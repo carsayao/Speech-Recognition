@@ -1,3 +1,5 @@
+The midpoint report for an Implementation Project should be approximately two pages long and should consist of:
+
 Updates to Project Objective, Project Approach, and Team Structure.
 Review your objective, approach and team structure and update as necessary.
 Update on progress with respect to Project Milestones from the Project Plan.
