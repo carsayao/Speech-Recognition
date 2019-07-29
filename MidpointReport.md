@@ -18,10 +18,9 @@
 
 ## Updates
 
-
 ### Project Milestones ( from the Project Plan )
 ( Provide an update on your progress, are you where you thought you’d be at this point? Include any modifications or adjustments to your project plan.)
 
 # Meeting
-*When*: Tue Jul 30, 2019 10:30am - 11am
-*Where*: FAB 10
+**When**: Tue Jul 30, 2019 10:30am - 11am
+**Where**: FAB 10
