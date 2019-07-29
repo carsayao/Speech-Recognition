@@ -8,7 +8,7 @@ The midpoint report for an Implementation Project should be approximately two pa
 - Date / time of scheduled midpoint meeting with Prof. 
 
 
-# Meeting
+## Meeting
 **When**: Tue Jul 30, 2019 10:30am - 11am
 
 **Where**: FAB 10
