@@ -15,6 +15,14 @@ There is no explicit team structure established. Progress comes in the form of i
 
 ## Update on Progress with respect to Project Milestones
 
+Original milestones:
+- Successful processing of the audio data
+- Successful build of basic wave and spectrogram visualizations
+- Aggregated visualizations of the audio data
+- Build clustered visualizations of the audio data
+- Find trends and interpret data
+
+
 We have met most of the initial milestones we set, as we have been able to:
 - Process audio data
 - Plot various features of the audio files in our dataset
