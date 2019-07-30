@@ -17,3 +17,17 @@ Our team consists of two sub-teams. One group works on classifying the dataset u
 * Build clustered visualizations of the audio data
 * Find trends and interpret data
 
+## How to set up and use `virtual env`
+    pip3 install virtualenv
+
+    virtualenv -p python3 env
+
+This will install virtualenv using pip3 and create a an `env` folder that will contain the libraries brought it.
+
+    source env/bin/activate
+
+This will put your shell into the virtual environment where you will have the libraries brought it.
+
+    pip install -r requirements.txt
+This will install the libraries that are found in the `requirements.txt`
+When you are done working, use `deactivate` to get out of the virtual environment
