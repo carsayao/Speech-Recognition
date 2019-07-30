@@ -26,4 +26,6 @@ for idx, file in enumerate(files):
     norm_data = (data -data.mean())/data.std()
     ax[r+1,c].plot(norm_data,lw=1)
     ax[r+1,c].axis("off")
-    plt.savefig(file+".png")
+    #plt.savefig(file+".png")
+    # Save to /spectro
+    plt.savefig("./plots/spectro/spectro_"+file+".png")

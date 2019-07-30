@@ -21,5 +21,8 @@ for file in os.listdir("./wavs/"):
     F, f_names = audioFeatureExtraction.stFeatureExtraction(x, Fs, 0.050*Fs, 0.025*Fs)
     sns.set(style="whitegrid")
     vplot = sns.violinplot(F[feature1,:], orient="v")
+    
+    # M
+    plt.savefig("./plots/violin/violin_"+file+".png")
 
-plt.show()
+#plt.show()
