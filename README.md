@@ -28,6 +28,6 @@ This will install virtualenv using pip3 and create a an `env` folder that will c
 
 This will put your shell into the virtual environment where you will have the libraries brought it.
 
-    pip install -r requirements.txt
+    pip3 install -r requirements.txt
 This will install the libraries that are found in the `requirements.txt`
 When you are done working, use `deactivate` to get out of the virtual environment
