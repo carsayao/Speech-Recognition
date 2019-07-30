@@ -2,6 +2,18 @@
 
 The midpoint report for the Speech Visualization team's Implementation Project
 
+## Meeting notes
+
+what data do you want to aggregate and what do you want to learn from the data?
+aka, what visualizations do you want to build what do you expect to learn?
+"here's the plots we made, and here's what we learned"
+
+what's a conclusion you might reach from finding trends?
+
+words may look similar dependent on features. do they look different when we look at different features?
+
+push env to repo
+
 ## Updates to Project Objective, Project Approach, and Team Structure.
 
 Our original objective was to use various tools such as matplotlib, seaborn, pyAudioanalysis, and scipy to create visualizations of the audio files in our dataset. The goal is to show:
