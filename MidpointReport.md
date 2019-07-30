@@ -13,7 +13,7 @@ Our approach will be to gather some statistics for each instance of a specific w
 
 There is no explicit team structure established. Progress comes in the form of individual research, presentation of our findings, and steady expansion of our code. As the codebase grows, each member will likely focus on extracting/analyzing/plotting one or two statistics. Finally, they will be all tied together at the end.
 
-## Update on progress with respect to Project Milestones from the Project Plan.
+## Update on Progress with respect to Project Milestones
 
 We have met most of the initial milestones we set, as we have been able to:
 - Process audio data
