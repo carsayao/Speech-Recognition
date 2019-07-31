@@ -10,40 +10,41 @@ import pandas as pd
 import os, sys, errno
 
 #Enum for features
-feat = Enum('ZCR',
-            'ENERGY',
-            'ENTENERGY',
-            'SPECSENTROID',
-            'SPECSPREAD',
-            'SPECENT',
-            'SPECFLUX',
-            'SPECROLLOFF',
-            'MFCC1',
-            'MFCC2',
-            'MFCC3',
-            'MFCC4',
-            'MFCC5',
-            'MFCC6',
-            'MFCC7',
-            'MFCC8',
-            'MFCC9',
-            'MFCC10',
-            'MFCC11',
-            'MFCC12',
-            'MFCC13',
-            'CHROMA1'
-            'CHROMA2'
-            'CHROMA3'
-            'CHROMA4'
-            'CHROMA5'
-            'CHROMA6'
-            'CHROMA7'
-            'CHROMA8'
-            'CHROMA9'
-            'CHROMA10'
-            'CHROMA11'
-            'CHROMA12'
-            'CHROMADEV')
+class feature(Enum):
+    ZCR = 0
+    ENERGY = 1
+    ENTENERGY = 2
+    SPECSENTROID = 3
+    SPECSPREAD = 4
+    SPECENT = 5
+    SPECFLUX = 6
+    SPECROLLOFF = 7
+    MFCC1 = 8
+    MFCC2 = 9
+    MFCC3 = 10
+    MFCC4 = 11
+    MFCC5 = 12
+    MFCC6 = 13
+    MFCC7 = 14
+    MFCC8 = 15
+    MFCC9 = 16
+    MFCC10 = 17
+    MFCC11 = 18
+    MFCC12 = 19
+    MFCC13 = 20
+    CHROMA1 = 21
+    CHROMA2 = 22
+    CHROMA3 = 23
+    CHROMA4 = 24
+    CHROMA5 = 25
+    CHROMA6 = 26
+    CHROMA7 = 27
+    CHROMA8 = 28
+    CHROMA9 = 29
+    CHROMA10 = 30
+    CHROMA11 = 31
+    CHROMA12 = 32
+    CHROMADEV = 33
 
 #Get current working directory
 path = os.getcwd()
