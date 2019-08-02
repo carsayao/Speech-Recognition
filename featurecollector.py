@@ -81,9 +81,13 @@ for folder in inputFolders:
         except:
             print("Error processing %s " % clip)
             sys.exit(0)
-
+        
+        # Short term
         #F, f_names = audioFeatureExtraction.stFeatureExtraction(x, Fs, 0.050*Fs, 0.025*Fs)
+
+        # Mid term
         M, S, mtf_names = audioFeatureExtraction.mtFeatureExtraction(x, Fs, 1.0, 1.0, 0.050*Fs, 0.025*Fs)
+        #tempdf = pd.DataFrame(F)
         tempdf = pd.DataFrame(M)
         df = df.append(tempdf)
 
