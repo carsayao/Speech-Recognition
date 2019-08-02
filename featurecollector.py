@@ -9,6 +9,10 @@ import numpy as np
 import pandas as pd
 import os, sys, errno
 
+# Suppress warnings
+#import warnings
+#warnings.filterwarnings('ignore')
+
 #Enum for features
 class feature(Enum):
     ZCR = 0
@@ -83,12 +87,12 @@ for folder in inputFolders:
             sys.exit(0)
         
         # Short term
-        #F, f_names = audioFeatureExtraction.stFeatureExtraction(x, Fs, 0.050*Fs, 0.025*Fs)
+        S, sf_names = audioFeatureExtraction.stFeatureExtraction(x, Fs, 0.050*Fs, 0.025*Fs)
+        tempdfs = pd.DataFrame(S)
 
         # Mid term
-        M, S, mtf_names = audioFeatureExtraction.mtFeatureExtraction(x, Fs, 1.0, 1.0, 0.050*Fs, 0.025*Fs)
-        #tempdf = pd.DataFrame(F)
-        tempdf = pd.DataFrame(M)
+        M, S, mf_names = audioFeatureExtraction.mtFeatureExtraction(x, Fs, 1.0, 1.0, 0.050*Fs, 0.025*Fs)
+        tempdm = pd.DataFrame(M)
         df = df.append(tempdf)
 
     export = df.to_csv(outputDir+"/"+folder.name+"_features.csv")
