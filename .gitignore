@@ -1,7 +1,11 @@
 # Miguel: Dir where I place files to be tested
 wavs/
+data/
+plot/
+output/
 # Miguel: Full data set (data_set/)
 data_set/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -82,8 +82,9 @@ for folder in inputFolders:
             print("Error processing %s " % clip)
             sys.exit(0)
 
-        F, f_names = audioFeatureExtraction.stFeatureExtraction(x, Fs, 0.050*Fs, 0.025*Fs)
-        tempdf = pd.DataFrame(F)
+        #F, f_names = audioFeatureExtraction.stFeatureExtraction(x, Fs, 0.050*Fs, 0.025*Fs)
+        M, S, mtf_names = audioFeatureExtraction.mtFeatureExtraction(x, Fs, 1.0, 1.0, 0.050*Fs, 0.025*Fs)
+        tempdf = pd.DataFrame(M)
         df = df.append(tempdf)
 
     export = df.to_csv(outputDir+"/"+folder.name+"_features.csv")
