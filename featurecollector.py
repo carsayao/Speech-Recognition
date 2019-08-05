@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import pandas as pd
+import warnings
 import os, sys, errno
 
 # Suppress warnings
@@ -57,7 +58,8 @@ path = os.getcwd()
 outputDir = path + "/output" #Output directory
 inputDir = path + "/data" #Input directory
 inputFolders = [] #List of folders with data by name
-df = pd.DataFrame() #Data frame to hold aggregated features
+stdf = pd.DataFrame() #Data frame to hold aggregated short term features
+mtdf = pd.DataFrame() #Data frame to hold aggregated mid term features
 
 #Make output folder, catch error if it exists already, and print error
 #Abort on other OS errors
@@ -85,15 +87,22 @@ for folder in inputFolders:
         except:
             print("Error processing %s " % clip)
             sys.exit(0)
-        
+
+        # Get rid of runtime warnings, shouldn't be an issue
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", category=RuntimeWarning)
+
         # Short term
-        S, sf_names = audioFeatureExtraction.stFeatureExtraction(x, Fs, 0.050*Fs, 0.025*Fs)
-        tempdfs = pd.DataFrame(S)
+            S, sf_names = audioFeatureExtraction.stFeatureExtraction(x, Fs, 0.050*Fs, 0.025*Fs)
+            tempstdf = pd.DataFrame(S)
+            stdf = stdf.append(tempstdf)
 
         # Mid term
-        M, S, mf_names = audioFeatureExtraction.mtFeatureExtraction(x, Fs, 1.0, 1.0, 0.050*Fs, 0.025*Fs)
-        tempdm = pd.DataFrame(M)
-        df = df.append(tempdf)
+        # Found some documentation for matlab audio feature extraction that used these window sizes - seems to work
+            M, S, mf_names = audioFeatureExtraction.mtFeatureExtraction(x, Fs, 2.0*Fs, 1.0*Fs, 0.050*Fs, 0.025*Fs)
+            tempmtdf = pd.DataFrame(M)
+            mtdf = mtdf.append(tempmtdf)
 
-    export = df.to_csv(outputDir+"/"+folder.name+"_features.csv")
+    exportst = stdf.to_csv(outputDir+"/"+folder.name+"_stfeatures.csv")
+    exportmt = mtdf.to_csv(outputDir+"/"+folder.name+"_mtfeatures.csv")
     print("%s.csv done" % folder.name)
