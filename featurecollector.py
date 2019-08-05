@@ -10,9 +10,6 @@ import pandas as pd
 import warnings
 import os, sys, errno
 
-# Suppress warnings
-#import warnings
-#warnings.filterwarnings('ignore')
 
 #Enum for features
 class feature(Enum):
