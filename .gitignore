@@ -1,4 +1,5 @@
 #Project files/folders
+.vscode/
 .DS_Store
 data/
 output/

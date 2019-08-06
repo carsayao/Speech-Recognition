@@ -53,10 +53,13 @@ path = os.getcwd()
 
 #Setup
 outputDir = path + "/output" #Output directory
+binDir = path + "/output/bin"
 inputDir = path + "/data" #Input directory
 inputFolders = [] #List of folders with data by name
 stdf = pd.DataFrame() #Data frame to hold aggregated short term features
 mtdf = pd.DataFrame() #Data frame to hold aggregated mid term features
+stbinaries = []
+mtbinaries = []
 
 #Make output folder, catch error if it exists already, and print error
 #Abort on other OS errors
@@ -71,6 +74,18 @@ except OSError as e:
         sys.exit(0)
 else:
     print ("Successfully created %s " % outputDir)
+
+try:
+    os.mkdir(binDir)
+
+except OSError as e:
+    if e.errno == errno.EEXIST:
+        print("%s directory already exists" % binDir)
+    else:
+        print(e.strerror)
+        sys.exit(0)
+else:
+    print ("Successfully created %s " % binDir)
 
 #Get paths for subdirectories of input data folder
 for dir in os.scandir(inputDir):
@@ -93,13 +108,30 @@ for folder in inputFolders:
             S, sf_names = audioFeatureExtraction.stFeatureExtraction(x, Fs, 0.050*Fs, 0.025*Fs)
             tempstdf = pd.DataFrame(S)
             stdf = stdf.append(tempstdf)
+            stbinaries.append(S)
 
         # Mid term
         # Found some documentation for matlab audio feature extraction that used these window sizes - seems to work
-            M, S, mf_names = audioFeatureExtraction.mtFeatureExtraction(x, Fs, 2.0*Fs, 1.0*Fs, 0.050*Fs, 0.025*Fs)
+            M, S, mf_names = audioFeatureExtraction.mtFeatureExtraction(x, Fs, 1.0*Fs, 1.0*Fs, 0.050*Fs, 0.025*Fs)
+            # print(M)
             tempmtdf = pd.DataFrame(M)
+            # print(tempmtdf)
             mtdf = mtdf.append(tempmtdf)
+            mtbinaries.append(M)
 
     exportst = stdf.to_csv(outputDir+"/"+folder.name+"_stfeatures.csv")
     exportmt = mtdf.to_csv(outputDir+"/"+folder.name+"_mtfeatures.csv")
+    # print('stbinaries',stbinaries)
+    # stbinaryNp = np.array(stbinaries)
+    # print('np.array(stbinaries)',stbinaries)
+
+    # print('mtbinaries',mtbinaries)
+    # mtbinaryNp = np.array(mtbinaries)
+    # print('np.array(mtbinaries)',mtbinaries)
+    # stbinaryNp.tofile(binDir+'/'+folder.name+'_stbinaries')
+    # mtbinaryNp.tofile(binDir+'/'+folder.name+'_mtbinaries')
+
+    # stbinaryNp.savetext(binDir+'/'+folder.name+'_stbinaries')
+    # mtbinaryNp.savetext(binDir+'/'+folder.name+'_mtbinaries')
+
     print("%s.csv done" % folder.name)
