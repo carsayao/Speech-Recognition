@@ -12,4 +12,6 @@ six==1.12.0
 pyAudioAnalysis==0.2.5
 eyed3==0.8.10
 pydub==0.23.1
+# pip3 install -r requirements.txt
+# Manual install of ffmpeg
 # apt install ffmpeg
