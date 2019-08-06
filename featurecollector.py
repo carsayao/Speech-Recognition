@@ -78,6 +78,7 @@ for dir in os.scandir(inputDir):
 
 #Go through folders extracting features and putting them in a dataframe
 for folder in inputFolders:
+    print("Working in %s" % folder.name)
     for clip in os.scandir(folder):
         try:
             [Fs, x] = audioBasicIO.readAudioFile(clip.path)
@@ -102,4 +103,4 @@ for folder in inputFolders:
 
     exportst = stdf.to_csv(outputDir+"/"+folder.name+"_stfeatures.csv")
     exportmt = mtdf.to_csv(outputDir+"/"+folder.name+"_mtfeatures.csv")
-    print("%s.csv done" % folder.name)
+    print("%s csvs done" % folder.name)
