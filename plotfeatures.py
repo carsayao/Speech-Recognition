@@ -28,14 +28,18 @@ for dir in os.scandir(outputDir):
 pd.set_option('display.width', 1000)
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.max_row', 500)
+np.set_printoptions(suppress=True)
 
-importst = pd.read_csv(outputDir + '/bed_stfeatures.csv')
+# importst = pd.read_csv(outputDir + '/bed_stfeatures.csv')
 # print(importst)
-importmt = pd.read_csv(outputDir + '/bed_mtfeatures.csv')
+# importmt = pd.read_csv(outputDir + '/bed_mtfeatures.csv')
+importmt = np.loadtxt(outputDir + '/bed_mtfeatures.csv')
 
 # Return a Numpy representation of the DataFrame
-stdf = importst.values
-mtdf = importmt.values
+# stdf = importst.to_numpy
+# mtdf = importmt.to_numpy
+# stdf = importst.values
+# mtdf = importmt.values
 print(mtdf.size//2)
 for i in range(mtdf.size//68):
     print(mtdf[i])
