@@ -1,13 +1,12 @@
 # what needs to be done in terms of processing?
-    - ~~get midterm features to produces feature vector~~
-        - ~~take individual statistics of each word and average them~~
-        note: mean and std deviation are separated by 34 in the index
-    - ~~import csv files as np.array~~
-	- compute similarity matrix based on cosine distances of individual feature vectors
+- ~~get midterm features to produces feature vector~~
+    - ~~take individual statistics of each word and average them~~
+    note: mean and std deviation are separated by 34 in the index
+- ~~import csv files as np.array~~
+- compute similarity matrix based on cosine distances of individual feature vectors
 
-what other models should we build?
-	- 3d spectrogram
-    https://www.kaggle.com/davids1992/speech-representation-and-data-exploration
+# what other models should we build?
+- [3d spectrogram](https://www.kaggle.com/davids1992/speech-representation-and-data-exploration)
   
 ## [chordial diagram](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144610)
 
