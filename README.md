@@ -1,5 +1,5 @@
 # Usage
-Place wav files in /data in respective folders, or change path in collect_features.py. Run `python3 collect_features.py` to generate /output folder. /output contains respective folders, each containing csv files of mid-term features. This also generates short-term features which are saved in /output. Run `python3 mean_features.py` to generate a csv containing the mean of each folder.
+Create /data at root and place wav files in /data in respective folders (i.e. bed wav commands go in /bed and /bed goes in /output), or change path in collect_features.py. Run `python3 collect_features.py` to generate /output folder. /output contains respective folders, each containing csv files of mid-term features. `collect_features.py` also generates short-term features which are saved in /output. Run `python3 mean_features.py` to generate a csv containing the mean of each folder.
 
 # Project Proposal
 ## Team Members
