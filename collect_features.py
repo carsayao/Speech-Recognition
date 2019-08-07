@@ -79,7 +79,7 @@ for dir in os.scandir(inputDir):
 #Go through folders extracting features and putting them in a dataframe
 for folder in inputFolders:
     try:
-        os.mkdir(outputDir+'/'+folder.name)
+        os.mkdir(outputDir+"/"+folder.name)
     except OSError as e:
         if e.errno == errno.EEXIST:
             print("%s directory already exists" % folder.name)
@@ -87,7 +87,7 @@ for folder in inputFolders:
             print(e.strerror)
             sys.exit(0)
     else:
-        print ("Successfully created %s " % outputDir+'/'+folder.name)
+        print ("Successfully created %s " % outputDir+"/"+folder.name)
 
 
     for clip in os.scandir(folder):
@@ -110,31 +110,12 @@ for folder in inputFolders:
         # Found some documentation for matlab audio feature extraction that used these window sizes - seems to work
             M, S, mf_names = audioFeatureExtraction.mtFeatureExtraction(x, Fs, 1.0*Fs, 1.0*Fs, 0.050*Fs, 0.025*Fs)
             tempmtdf = pd.DataFrame(M)
-            #filename = str(clip)[11:28]
-            #filename = os.path.splitext(clip
             # Remove extension
             filename = os.path.splitext(clip.name)[0]
-            #print(filename)
-            exportmt = tempmtdf.to_csv(outputDir+"/"+folder.name+'/'+folder.name+'_'+filename+"_mtfeatures.csv", index=True, sep=',')
+            # Export pandas dataframe to csv file in /output/<foldername>/ index=false to remove index col
+            exportmt = tempmtdf.to_csv(outputDir+"/"+folder.name+"/"+folder.name+"_"+filename+"_mtfeatures.csv", index=False, sep=",")
             mtdf = mtdf.append(tempmtdf)
-            
-            #stbinaries.append(S)
-            #mtbinaries.append(M)
 
-    #exportst = stdf.to_csv(outputDir+"/"+folder.name+"_stfeatures.csv", index=True, sep=',')
-    #exportmt = mtdf.to_csv(outputDir+"/"+folder.name+"_mtfeatures.csv", index=True, sep=',')
-    
-    # print('stbinaries',stbinaries)
-    # stbinaryNp = np.array(stbinaries)
-    # print('np.array(stbinaries)',stbinaries)
-
-    # print('mtbinaries',mtbinaries)
-    # mtbinaryNp = np.array(mtbinaries)
-    # print('np.array(mtbinaries)',mtbinaries)
-    # stbinaryNp.tofile(binDir+'/'+folder.name+'_stbinaries')
-    # mtbinaryNp.tofile(binDir+'/'+folder.name+'_mtbinaries')
-
-    # stbinaryNp.savetext(binDir+'/'+folder.name+'_stbinaries')
-    # mtbinaryNp.savetext(binDir+'/'+folder.name+'_mtbinaries')
+    exportst = stdf.to_csv(outputDir+"/"+folder.name+"_stfeatures.csv", index=True, sep=",")
 
     print("%s.csv done" % folder.name)
