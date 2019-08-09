@@ -3,7 +3,8 @@
 .DS_Store
 data/
 plots/
-output/[.+]
+output/
+csvs/
 wavs/
 data_set/
 matplots/
