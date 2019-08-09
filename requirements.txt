@@ -15,3 +15,6 @@ pydub==0.23.1
 # pip3 install -r requirements.txt
 # Manual install of ffmpeg
 # apt install ffmpeg
+# for chordial.py
+sklearn==0.0
+hmmlearn==0.2.2

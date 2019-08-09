@@ -7,6 +7,12 @@ plot/
 output/
 wavs/
 data_set/
+matplots/
+# chordial.py generated
+*isualiz*
+
+# Swaps
+*.sw[o-z]
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

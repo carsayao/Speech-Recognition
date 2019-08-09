@@ -93,6 +93,8 @@ for folder in inputFolders:
     for clip in os.scandir(folder):
         try:
             [Fs, x] = audioBasicIO.readAudioFile(clip.path)
+            print("Fs",Fs)
+            print("x",x)
         except:
             print("Error processing %s " % clip)
             sys.exit(0)
