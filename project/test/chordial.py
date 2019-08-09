@@ -9,4 +9,8 @@ import pandas as pd
 import warnings
 import os, sys, errno
 
-aA.featureVisualizationDirWrapper(os.getcwd()+"/data")
+# Get full path to file's directory
+path = os.path.dirname(os.path.realpath(__file__))
+inputDir = path + "/data"
+
+aA.featureVisualizationDirWrapper(inputDir)

@@ -1,3 +1,8 @@
+#
+# mean_features.py
+#
+
+
 # Make sure to run collect_features.py first
 
 from pyAudioAnalysis import audioBasicIO
@@ -18,12 +23,12 @@ pd.set_option("display.max_columns", 500)
 pd.set_option("display.max_row", 500)
 np.set_printoptions(suppress=True)
 
-#Get current working directory
-path = os.getcwd()
+# Get full path to file's directory
+path = os.path.dirname(os.path.realpath(__file__))
 
 #Setup
-outputDir = path + "/output" #Output directory
-inputDir = path + "/data" #Input directory
+outputDir = path + "/../../output/csvs" #Output directory
+inputDir = path + "/../../data" #Input directory
 inputFolders = [] #List of folders with data by name
 
 #Get paths for subdirectories of input data folder
@@ -34,11 +39,16 @@ for dir in os.scandir(outputDir):
     inputFolders.append(dir)
 
 for folder in inputFolders:
+    # Skip empty folders
+    dirContents = os.listdir(folder)
+    if len(dirContents) == 0:
+        print("/%s is empty" % folder.name)
+        continue
     # Instantiate numpy array
     summed = np.zeros((68, 1))
 
     print("/"+folder.name)
-    print("\t"+"Processing...")
+    print("Processing...")
     
     # Number of samples in folder
     samples = 0
@@ -46,13 +56,14 @@ for folder in inputFolders:
         # Skip over
         if "mean" in f.name:
             continue
+        print("isfile(f)",os.path.isfile(f))
         
         # Import mt csv, reshape for compatibility in array operations
         importmt = np.loadtxt(outputDir+"/"+folder.name+"/"+f.name, delimiter=",", skiprows=1)
         importmt = importmt.reshape((68,1))
         summed = summed + importmt
         samples = samples + 1
-        print("\t\t"+f.name)
+        print(f.name)
     
     summed = summed / samples
     # Save to folder name

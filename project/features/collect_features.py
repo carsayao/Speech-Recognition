@@ -1,3 +1,8 @@
+#
+# collect_features.py
+#
+
+
 from pyAudioAnalysis import audioBasicIO
 from pyAudioAnalysis import audioFeatureExtraction
 from enum import Enum
@@ -48,12 +53,12 @@ class feature(Enum):
     CHROMA12 = 32
     CHROMADEV = 33
 
-#Get current working directory
-path = os.getcwd()
+# Get full path to file's directory
+path = os.path.dirname(os.path.realpath(__file__))
 
 #Setup
-outputDir = path + "/output" #Output directory
-inputDir = path + "/data" #Input directory
+outputDir = path + "/../../output/csvs" #Output directory
+inputDir = path + "/../../data" #Input directory
 inputFolders = [] #List of folders with data by name
 stdf = pd.DataFrame() #Data frame to hold aggregated short term features
 mtdf = pd.DataFrame() #Data frame to hold aggregated mid term features
@@ -74,10 +79,17 @@ else:
 
 #Get paths for subdirectories of input data folder
 for dir in os.scandir(inputDir):
+    if "features" in dir.name:
+        continue
     inputFolders.append(dir)
 
 #Go through folders extracting features and putting them in a dataframe
 for folder in inputFolders:
+    # Skip empty folders
+    dirContents = os.listdir(folder)
+    if len(dirContents) == 0:
+        print("/%s is empty" % folder.name)
+        continue
     try:
         os.mkdir(outputDir+"/"+folder.name)
     except OSError as e:
@@ -91,10 +103,10 @@ for folder in inputFolders:
 
 
     for clip in os.scandir(folder):
+        if "mean" in clip.name:
+            continue
         try:
             [Fs, x] = audioBasicIO.readAudioFile(clip.path)
-            print("Fs",Fs)
-            print("x",x)
         except:
             print("Error processing %s " % clip)
             sys.exit(0)

@@ -2,9 +2,8 @@
 .vscode/
 .DS_Store
 data/
-output/
-plot/
-output/
+plots/
+output/[.+]
 wavs/
 data_set/
 matplots/
