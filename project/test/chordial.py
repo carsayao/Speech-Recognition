@@ -11,6 +11,6 @@ import os, sys, errno
 
 # Get full path to file's directory
 path = os.path.dirname(os.path.realpath(__file__))
-inputDir = path + "/data"
+inputDir = path + "/testData"
 
 aA.featureVisualizationDirWrapper(inputDir)
