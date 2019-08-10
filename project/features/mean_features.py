@@ -68,5 +68,7 @@ for folder in inputFolders:
     summed = summed / samples
     # Save to folder name
     np.savetxt(outputDir+"/"+folder.name+"/"+folder.name+"_"+"mean"+"_mtfeatures.csv", summed)
+    # Output to test folder
+    np.savetxt(path+"/../test/mtfeatures/"+folder.name+".csv", summed)
     print ("Successfully saved %s " % folder.name+"_"+"mean"+"_mtfeatures.csv\n")
 
