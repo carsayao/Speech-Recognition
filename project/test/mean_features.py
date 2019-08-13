@@ -27,7 +27,8 @@ np.set_printoptions(suppress=True)
 path = os.path.dirname(os.path.realpath(__file__))
 
 #Setup
-outputDir = path + "/../../output/csvs" #Output directory
+inputDir = path + "/csvs"
+# inputDir = path + "/../../output/csvs"
 inputFolders = [] #List of folders with data by name
 
 try:
@@ -36,7 +37,7 @@ except:
     print()
 
 #Get paths for subdirectories of input data folder
-for dir in os.scandir(outputDir):
+for dir in os.scandir(inputDir):
     # Skip over stfeatures
     if "stfeatures" in dir.name:
         continue
@@ -60,19 +61,19 @@ for folder in inputFolders:
         # Skip over
         if "mean" in f.name:
             continue
-        print("isfile(f)",os.path.isfile(f))
+        # print("isfile(f)",os.path.isfile(f))
         
         # Import mt csv, reshape for compatibility in array operations
-        importmt = np.loadtxt(outputDir+"/"+folder.name+"/"+f.name, delimiter=",", skiprows=1)
+        print(f.name)
+        importmt = np.loadtxt(inputDir+"/"+folder.name+"/"+f.name, delimiter=",", skiprows=1)
         importmt = importmt.reshape((68,1))
         summed = summed + importmt
         samples = samples + 1
-        print(f.name)
     
     summed = summed / samples
     # Save to folder name
     #np.savetxt(outputDir+"/"+folder.name+"/"+folder.name+"_"+"mean"+"_mtfeatures.csv", summed)
     # Output to test folder
-    np.savetxt(path+"/../test/mtfeatures/"+folder.name+".csv", summed)
+    np.savetxt(path+"/mtfeatures/"+folder.name+".csv", summed)
     print ("Successfully saved %s " % folder.name+"_"+"mean"+"_mtfeatures.csv\n")
 

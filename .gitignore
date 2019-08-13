@@ -1,4 +1,5 @@
 #Project files/folders
+*Chord*
 .vscode/
 .DS_Store
 data/
@@ -140,4 +141,4 @@ dmypy.json
 .pyre/
 
 #CSVs
-*.csv
+#*.csv
