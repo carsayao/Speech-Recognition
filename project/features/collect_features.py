@@ -58,7 +58,8 @@ path = os.path.dirname(os.path.realpath(__file__))
 
 #Setup
 outputDir = path + "/../../output/csvs" #Output directory
-inputDir = path + "/../../data" #Input directory
+#inputDir = path + "/../../data" #Input directory
+inputDir = path + "/../../../data_set" #Input directory
 inputFolders = [] #List of folders with data by name
 stdf = pd.DataFrame() #Data frame to hold aggregated short term features
 mtdf = pd.DataFrame() #Data frame to hold aggregated mid term features
@@ -116,9 +117,9 @@ for folder in inputFolders:
             warnings.simplefilter("ignore", category=RuntimeWarning)
 
         # Short term
-            S, sf_names = audioFeatureExtraction.stFeatureExtraction(x, Fs, 0.050*Fs, 0.025*Fs)
-            tempstdf = pd.DataFrame(S)
-            stdf = stdf.append(tempstdf)
+            #S, sf_names = audioFeatureExtraction.stFeatureExtraction(x, Fs, 0.050*Fs, 0.025*Fs)
+            #tempstdf = pd.DataFrame(S)
+            #stdf = stdf.append(tempstdf)
 
         # Mid term
         # Found some documentation for matlab audio feature extraction that used these window sizes - seems to work
@@ -130,6 +131,6 @@ for folder in inputFolders:
             exportmt = tempmtdf.to_csv(outputDir+"/"+folder.name+"/"+folder.name+"_"+filename+"_mtfeatures.csv", index=False, sep=",")
             mtdf = mtdf.append(tempmtdf)
 
-    exportst = stdf.to_csv(outputDir+"/"+folder.name+"_stfeatures.csv", index=True, sep=",")
+    #exportst = stdf.to_csv(outputDir+"/"+folder.name+"_stfeatures.csv", index=True, sep=",")
 
     print("%s.csv done" % folder.name)

@@ -28,8 +28,12 @@ path = os.path.dirname(os.path.realpath(__file__))
 
 #Setup
 outputDir = path + "/../../output/csvs" #Output directory
-inputDir = path + "/../../data" #Input directory
 inputFolders = [] #List of folders with data by name
+
+try:
+    os.mkdir(path+"/../test/mtfeatures")
+except:
+    print()
 
 #Get paths for subdirectories of input data folder
 for dir in os.scandir(outputDir):
@@ -67,7 +71,7 @@ for folder in inputFolders:
     
     summed = summed / samples
     # Save to folder name
-    np.savetxt(outputDir+"/"+folder.name+"/"+folder.name+"_"+"mean"+"_mtfeatures.csv", summed)
+    #np.savetxt(outputDir+"/"+folder.name+"/"+folder.name+"_"+"mean"+"_mtfeatures.csv", summed)
     # Output to test folder
     np.savetxt(path+"/../test/mtfeatures/"+folder.name+".csv", summed)
     print ("Successfully saved %s " % folder.name+"_"+"mean"+"_mtfeatures.csv\n")
