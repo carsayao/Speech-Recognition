@@ -10,7 +10,7 @@ wavs/
 data_set/
 matplots/
 # chordial.py generated
-*isualiz*
+#*isualiz*
 
 # Swaps
 *.sw[o-z]
