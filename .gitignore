@@ -11,7 +11,6 @@ data_set/
 matplots/
 # chordial.py generated
 #*isualiz*
-plot_means.py
 
 # Swaps
 *.sw[o-z]
