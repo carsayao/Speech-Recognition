@@ -1,3 +1,21 @@
+#Project files/folders
+*Chord*
+.vscode/
+.DS_Store
+data/
+plots/
+output/
+csvs/
+wavs/
+data_set/
+matplots/
+# chordial.py generated
+#*isualiz*
+plot_means.py
+
+# Swaps
+*.sw[o-z]
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -26,13 +44,6 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-
-#Project
-.DS_Store
-data/
-output/
-
-
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -131,4 +142,4 @@ dmypy.json
 .pyre/
 
 #CSVs
-*.csv
+#*.csv

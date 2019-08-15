@@ -9,7 +9,12 @@ pytz==2019.1
 scipy==1.3.0
 seaborn==0.9.0
 six==1.12.0
-pyAudioAnalysis
-eyed3
-pydub
-ffmpeg
+pyAudioAnalysis==0.2.5
+eyed3==0.8.10
+pydub==0.23.1
+# pip3 install -r requirements.txt
+# Manual install of ffmpeg
+# apt install ffmpeg
+# for chordial.py
+sklearn==0.0
+hmmlearn==0.2.2
