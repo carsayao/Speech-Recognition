@@ -59,7 +59,7 @@ path = os.path.dirname(os.path.realpath(__file__))
 #Setup
 outputDir = path + "/../../output/csvs" #Output directory
 #inputDir = path + "/../../data" #Input directory
-inputDir = path + "/../../../data_set" #Input directory
+inputDir = path + "/../../../data_set" #Input directory (wav files)
 inputFolders = [] #List of folders with data by name
 stdf = pd.DataFrame() #Data frame to hold aggregated short term features
 mtdf = pd.DataFrame() #Data frame to hold aggregated mid term features
