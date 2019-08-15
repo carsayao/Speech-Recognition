@@ -15,13 +15,20 @@ fig.suptitle("Frequency Spectrum & Oscillogram", x=0.5, y=0.91, fontsize=16)
 for idx, file in enumerate(files):
     r,c = idx//columns*2, idx%columns
     rate, data = wav.read("./wavs/{}".format(file))
-    f, t, Sxx = signal.spectrogram(data, fs=rate)
+    f, t, Sxx = signal.spectrogram(data, fs=rate, nperseg=256)
     d = 20*np.log10(Sxx+1e-10)
+
+    major_ticks = np.arange(0,101,1000)
+    minor_ticks = np.arange(0,101,500)
+
     ax[r,c].pcolormesh(t,f,d, vmin=-1e1,vmax=d.max())
-    ax[r,c].set_title(file);
-    ax[r,c].set_xticks([])
+    ax[r,c].set_title(file)
+    ax[r,c].set_ylabel('Time')
+    ax[r,c].set_xticks(t[::16])
     ax[r,c].set_frame_on(False)
-    ax[r,c].set_yticks([])
+    ax[r,c].set_ylabel('Freqs')
+    ax[r,c].set_yticks(f[::16])
+    ax[r,c].set_ylim(0,4000)
 
     norm_data = (data -data.mean())/data.std()
     ax[r+1,c].plot(norm_data,lw=1)
